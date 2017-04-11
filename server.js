@@ -52,6 +52,9 @@ app.get('/api/todos/search', function search(req, res) {
 app.get('/api/todos', function index(req, res) {
   /* This endpoint responds with all of the todos
    */
+  // var newArray = json(todos); // not needed
+  var newObject = {data: todos};
+  res.status(200).json(newObject);
 });
 
 app.post('/api/todos', function create(req, res) {
@@ -64,6 +67,14 @@ app.get('/api/todos/:id', function show(req, res) {
   /* This endpoint will return a single todo with the
    * id specified in the route parameter (:id)
    */
+   var id = parseInt(req.params.id);
+  //  var id = req.params.id;
+   var oneObj = todos.filter(function(f){
+     return f._id === id;
+   })[0];
+   res.status(200).send(oneObj);
+   console.log("sent one ojbect id = input");
+  //  console.log('7');
 });
 
 app.put('/api/todos/:id', function update(req, res) {
