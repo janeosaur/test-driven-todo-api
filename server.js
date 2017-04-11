@@ -61,6 +61,8 @@ app.post('/api/todos', function create(req, res) {
   /* This endpoint will add a todo to our "database"
    * and respond with the newly created todo.
    */
+   res.status(200);
+
 });
 
 app.get('/api/todos/:id', function show(req, res) {
